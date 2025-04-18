@@ -1,0 +1,16 @@
+version: '3'
+services:
+  azuracast:
+    image: azuracast/azuracast:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=your_db_root_password  # Apna password yahan daal
+      - MYSQL_DATABASE=azuracast_db                # Database ka naam
+      - MYSQL_USER=azuracast_user                  # User ka naam
+      - MYSQL_PASSWORD=your_db_password           # User ka password
+    volumes:
+      - /mnt/data:/var/lib/azuracast               # AzuraCast data volume
+      - /mnt/config:/var/azuracast/config          # Configuration volume
+    ports:
+      - "80:80"                                    # HTTP port (port 80)
+      - "443:443"                                  # HTTPS port (port 443)
+    restart: unless-stopped                        # Container ko restart karne ka rule

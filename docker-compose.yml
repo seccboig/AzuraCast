@@ -12,7 +12,8 @@ services:
       - "8000:8000"
     restart: always
     volumes:
-      - azuracast_data:/var/azuracast
+      - azuracast_data:/var/azuracast  # Use Railway volume
+
 volumes:
   azuracast_data:
-    external: true  # Railway automatically handles this
+    external: true  # Railway will handle the volume
